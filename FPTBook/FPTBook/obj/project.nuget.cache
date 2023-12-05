@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GB/2VspQV0VCWoeCc52i2VzMYxpI2UzlBq5zMFlLrk+0VMv9HBJHjFFVQe3ztt+GOgICsXpsfOqk7hSxPJ49CA==",
+  "dgSpecHash": "m8UdpetDFBhgxd2Q9YTGdSLoHQbUiXa7zGvoU99OPGiQsTV4ATGaUFLQLwgCUjpo6CWAn5vnhv13eXOz2h3xDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\MSI GL65\\source\\repos\\FPTBook\\FPTBook\\FPTBook.csproj",
+  "projectFilePath": "C:\\Users\\MSI GL65\\Documents\\GitHub\\FPTBook\\FPTBook\\FPTBook\\FPTBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MSI GL65\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\MSI GL65\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

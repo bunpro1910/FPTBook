@@ -23,7 +23,9 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+               
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                   
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.IsInRole("Administrator"))
                         {
@@ -38,6 +40,12 @@
                             </li>
                         }
                     </ul>
+                    <div class="w-100 justify-content-center " style="display:flex">
+                        <div class="" style="height:80px; width:fit-content">
+                            <img class="" style="max-height:80px" src="https://upload.wikimedia.org/wikipedia/vi/b/bf/Official_logo_of_Greenwich_Vietnam.png" />
+                        </div>
+                    </div>
+
                     <partial name="_LoginPartial" />
                  @*    if (User.IsInRole("Administrator"))
                     {
