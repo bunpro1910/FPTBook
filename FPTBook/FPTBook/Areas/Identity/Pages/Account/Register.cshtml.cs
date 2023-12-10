@@ -130,9 +130,10 @@ namespace FPTBook.Areas.Identity.Pages.Account
                 user.FullName = Input.FullName;
                 user.Home_Address =Input.Home_Address;
                 var result = await _userManager.CreateAsync(user, Input.Password);
-                _userManager.AddToRoleAsync(user, "Customer").Wait();
+               
                 if (result.Succeeded)
                 {
+                    _userManager.AddToRoleAsync(user, "Customer").Wait();
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
