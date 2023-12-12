@@ -48,7 +48,7 @@
 						<div class="d-flex justify-content-between mb-2">
 							<p class="textmuted">Qty</p>
 							<div class="form-group" style="margin-left:auto;margin-right:0">
-								<input class="form-control " type="number" asp-for="Quantity" style="width:80px" value="1" min="1" id="InputTotal" />
+								<input class="form-control " type="number" asp-for="Quantity" style="width:80px" onchange="Edit()" value="1" min="1" id="InputTotal" />
 								
 							</div>
 
@@ -97,7 +97,9 @@
 	</div>
 </div>
 <script type="text/javascript">
-	
+	document.onload = function () {
+		
+	};
 	function Edit() {
 		var x = document.getElementById("InputTotal").value;
 		document.getElementById("Total").innerHTML = x * @ViewBag.book.Price
