@@ -33,7 +33,10 @@
                         @Html.DisplayNameFor(model => model.User.FullName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.User.Home_Address)
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Book)
@@ -64,9 +67,11 @@
                             @Html.DisplayFor(modelItem => item.User.FullName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.User.Home_Address)
+                            @Html.DisplayFor(modelItem => item.Address)
                         </td>
-
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
 
                         <td>
                             <a asp-action="ChangeStatus" asp-route-id="@item.Id">Change Status</a> |

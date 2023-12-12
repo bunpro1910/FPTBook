@@ -20,6 +20,8 @@ namespace FPTBook.Models
 		public int bookID { get; set; }
 		public Book? Book { get; set; }
 		public int Quantity { get; set; }
-		
+		public string Address { get; set; }
+		public int Phone { get; set; }
+
 	}
 }

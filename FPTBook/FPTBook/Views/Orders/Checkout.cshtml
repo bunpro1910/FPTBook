@@ -68,6 +68,23 @@
 								<span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4 totalprice" id="Total"> @(ViewBag.book.Price * quantity)</span>
 							</div>
 						</div>
+
+						<div class="d-flex justify-content-between mb-2">
+							<p class="textmuted">Address</p>
+							<div class="form-group" style="width:80%">
+								<input class="form-control " type="text" asp-for="Address" style="width:100%" />
+
+							</div>
+
+						</div>
+						<div class="d-flex justify-content-between mb-2">
+							<p class="textmuted">Phone</p>
+							<div class="form-group" style="width:80%">
+								<input class="form-control " type="text" asp-for="Phone" />
+
+							</div>
+
+						</div>
 						<div>
 							<input type="submit" class="btn btn-primary value="Check Out" />
 						</div>

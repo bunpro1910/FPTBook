@@ -51,6 +51,7 @@ namespace FPTBook.Controllers
         {
             var applicationDbContext = _context.Order.Include(o => o.Book).Include(o => o.Status).Include(o => o.User);
             ViewBag.book = _context.Book.Include(x=>x.Category).Include(x=>x.Publisher).FirstOrDefault(x=>x.Id ==bookId);
+            
             return View();
         }
 		// GET: Orders/Details/5
@@ -78,7 +79,7 @@ namespace FPTBook.Controllers
 		[Authorize]
 		[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Checkout([Bind("bookID,Quantity")] Order order)
+        public async Task<IActionResult> Checkout([Bind("bookID,Quantity,Address,Phone")] Order order)
         {
             if (ModelState.IsValid)
             {
