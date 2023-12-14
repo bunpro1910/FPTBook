@@ -44,7 +44,7 @@
 				<div style=" width:fit-content; padding:5px 10px 5px 10px; background-color:ThreeDDarkShadow; border-radius:10px">
 					@for (int i = 1; i <= ViewBag.MaxPage; i++)
 					{
-						<a asp-route-page="@i" style="padding:5px" class="page-item">@i</a>
+						<a href="?page=@i" style="padding:5px" class="page-item">@i</a>
 					}
 				</div>
 				
