@@ -144,6 +144,53 @@ namespace FPTBook.Migrations
                     b.ToTable("Book");
                 });
 
+            modelBuilder.Entity("FPTBook.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("IsCheckout")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("FPTBook.Models.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("BookID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CartID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookID");
+
+                    b.HasIndex("CartID");
+
+                    b.ToTable("CartItem");
+                });
+
             modelBuilder.Entity("FPTBook.Models.Category", b =>
                 {
                     b.Property<string>("Id")
@@ -181,13 +228,13 @@ namespace FPTBook.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CartID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCheckOut")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Phone")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<int>("StatusId")
@@ -196,16 +243,13 @@ namespace FPTBook.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("bookID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CartID");
 
                     b.HasIndex("StatusId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("bookID");
 
                     b.ToTable("Order");
                 });
@@ -412,6 +456,34 @@ namespace FPTBook.Migrations
                     b.Navigation("StoreOwner");
                 });
 
+            modelBuilder.Entity("FPTBook.Models.Cart", b =>
+                {
+                    b.HasOne("FPTBook.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FPTBook.Models.CartItem", b =>
+                {
+                    b.HasOne("FPTBook.Models.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FPTBook.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Cart");
+                });
+
             modelBuilder.Entity("FPTBook.Models.Category", b =>
                 {
                     b.HasOne("FPTBook.Models.ApplicationUser", "StoreOwner")
@@ -423,6 +495,12 @@ namespace FPTBook.Migrations
 
             modelBuilder.Entity("FPTBook.Models.Order", b =>
                 {
+                    b.HasOne("FPTBook.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FPTBook.Models.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
@@ -433,13 +511,7 @@ namespace FPTBook.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.HasOne("FPTBook.Models.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("bookID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
+                    b.Navigation("Cart");
 
                     b.Navigation("Status");
 

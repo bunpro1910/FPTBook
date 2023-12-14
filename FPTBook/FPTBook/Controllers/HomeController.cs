@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Linq;
 
 namespace FPTBook.Controllers
 {
@@ -25,10 +26,10 @@ namespace FPTBook.Controllers
 
 
         
-        public async Task<IActionResult> Index( string? id, [FromQuery] string search)
+        public async Task<IActionResult> Index( string? id, [FromQuery] string search,int? page)
         {
             string name = search;
-
+            int pageSize = 1;
 			var applicationDbContext = _context.Book.Include(b => b.Category).Where(x=>x.Category.IsRequest==false);
             if (id != null)
             {
@@ -38,6 +39,15 @@ namespace FPTBook.Controllers
             {
 				applicationDbContext = applicationDbContext.Where(x=>x.Title.Contains(name)).Include(b => b.Category);
 			}
+            var maxPage = (int)Math.Ceiling(_context.Book.Count() / (double)pageSize);
+            if (page > maxPage ||page ==0)
+            {
+                return NotFound();
+            }
+          
+			applicationDbContext = applicationDbContext.Skip(pageSize * (page==null?0:page.Value-1)).Take(pageSize);
+			  
+			ViewData["MaxPage"] = maxPage;
 			ViewData["Category"] = await _context.Category.Where(x=>x.IsRequest == false).ToListAsync();
 			return View(await applicationDbContext.ToListAsync());
    

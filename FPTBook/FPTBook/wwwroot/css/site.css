@@ -25,9 +25,14 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+.page-item{
+    font-size:20px
+}
+.page-item:hover {
+    background-color: white;
+}
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 .category-item a{
     text-decoration:none;

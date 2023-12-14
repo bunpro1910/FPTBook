@@ -14,44 +14,45 @@
 	</a>
 
 
-	@if (User.IsInRole("Administrator")){
-	<li class="nav-item" style="">
-		<a asp-controller="Categories" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
-			<i class="fas fa-fw fa-cog"></i>
-			Categories
-		</a>
-	</li>
+	@if (User.IsInRole("Administrator"))
+	{
+		<li class="nav-item" style="">
+			<a asp-controller="Categories" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
+				<i class="fas fa-fw fa-cog"></i>
+				Categories
+			</a>
+		</li>
 
 
-	<li class="nav-item" style="">
-		<a asp-controller="Books" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
-			<i class="fas fa-fw fa-cog"></i>
-			Books
-		</a>
-	</li>
+		<li class="nav-item" style="">
+			<a asp-controller="Books" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
+				<i class="fas fa-fw fa-cog"></i>
+				Books
+			</a>
+		</li>
 
-	<li class="nav-item" style="">
-		<a asp-controller="Accounts" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
-			<i class="fas fa-fw fa-cog"></i>
-			Accounts
-		</a>
-	</li>
-	<li class="nav-item" style="">
-		<a asp-controller="Publishers" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
-			<i class="fas fa-fw fa-cog"></i>
-			Publishers
-		</a>
-	</li>
-	<li class="nav-item" style="">
-		<a asp-controller="Orders" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
-			<i class="fas fa-fw fa-cog"></i>
-			Record 
-		</a>
-	</li>
+		<li class="nav-item" style="">
+			<a asp-controller="Accounts" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
+				<i class="fas fa-fw fa-cog"></i>
+				Accounts
+			</a>
+		</li>
+		<li class="nav-item" style="">
+			<a asp-controller="Publishers" asp-action="Index" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
+				<i class="fas fa-fw fa-cog"></i>
+				Publishers
+			</a>
+		</li>
+		<li class="nav-item" style="">
+			<a asp-controller="Orders" asp-action="RecordIndex" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
+				<i class="fas fa-fw fa-cog"></i>
+				Record
+			</a>
+		</li>
 
 	}
-		@if (User.IsInRole("Store Owner"))
-		{
+	@if (User.IsInRole("Store Owner"))
+	{
 		<li class="nav-item" style="">
 			<a asp-controller="Categories" asp-action="ListCategory" class="nav-link collapsed dashboardlink" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" style="text-decoration:none; color:white">
 				<i class="fas fa-fw fa-cog"></i>
@@ -70,8 +71,8 @@
 				Record
 			</a>
 		</li>
-		}
-		<!-- Heading -->
+	}
+	<!-- Heading -->
 	<!-- Nav Item - Pages Collapse Menu -->
 
 

@@ -24,6 +24,7 @@ namespace FPTBook.Data
 
         public DbSet<FPTBook.Models.Status>? Status { get; set; }
         public DbSet<FPTBook.Models.Publisher>? Publisher { get; set; }
-
-    }
+		public DbSet<FPTBook.Models.Cart>? Cart { get; set; }
+		public DbSet<FPTBook.Models.CartItem>? CartItem { get; set; }
+	}
 }

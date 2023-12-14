@@ -34,12 +34,21 @@
 							<h5 class="card-title">@item.Title</h5>
 							<p class="card-text">@item.Description</p>
 							<p class="card-text">@item.Price</p>
-							<a asp-controller="Orders" asp-action="Checkout" asp-route-bookId="@item.Id" class="btn btn-primary">Check Out</a>
+							<a asp-controller="Orders" asp-action="Checkout" asp-route-bookId="@item.Id" class="btn btn-primary">Add To Cart</a>
 						</div>
 
 					</div>
 				</div>
 			}
+			<div style="display:flex;width:100%;justify-content:center ">
+				<div style=" width:fit-content; padding:5px 10px 5px 10px; background-color:ThreeDDarkShadow; border-radius:10px">
+					@for (int i = 1; i <= ViewBag.MaxPage; i++)
+					{
+						<a asp-route-page="@i" style="padding:5px" class="page-item">@i</a>
+					}
+				</div>
+				
+			</div>
 		</div>
 		<!-- Repeat the above card structure for each book -->
 		<!-- Example for a second book -->

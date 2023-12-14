@@ -11,15 +11,17 @@ namespace FPTBook.Models
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		[Required]
 		public int Id { get; set; }
-		public string? UserId {  get; set; }
+	
 		public int StatusId { get; set; }	
 		public Status? Status { get; set; }
 		[DisplayName("Date Check Out")]
 		public DateTime DateCheckOut { get; set; }
+		public string? UserId { get; set; }
 		public ApplicationUser? User { get; set; }
-		public int bookID { get; set; }
-		public Book? Book { get; set; }
-		public int Quantity { get; set; }
+
+		public int? CartID { get; set; }
+		public Cart? Cart { get; set; }
+	
 		public string Address { get; set; }
 		public int Phone { get; set; }
 

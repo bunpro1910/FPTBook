@@ -17,10 +17,7 @@
                         @Html.DisplayNameFor(model => model.Id)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Book.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Book.ImageName)
+                        Show Book
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Status)
@@ -38,9 +35,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Phone)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Book)
-                    </th>
+      
                     <th></th>
                 </tr>
             </thead>
@@ -52,10 +47,7 @@
                             @Html.DisplayFor(modelItem => item.Status.Id)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Book.Title)
-                        </td>
-                        <td>
-                            <img decoding="async" src="@("~/Image/" + item.Book.ImageName)" asp-append-version="true" alt="ImageBook" style="max-height:300px;max-width:300px" />
+                            <a asp-action="CartIndex" asp-route-id="@item.CartID" >Show Book</a>
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Status.name)
