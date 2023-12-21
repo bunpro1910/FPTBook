@@ -132,7 +132,7 @@ namespace FPTBook.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Description,Price,ImageName,PublisherId,PublicationDate,CategoryId,StoreOwnerId")] Book book)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Description,Price,ImageFile,ImageName,PublisherId,PublicationDate,CategoryId,StoreOwnerId")] Book book)
         {
             if (id != book.Id)
             {
@@ -143,13 +143,36 @@ namespace FPTBook.Controllers
             {
                 try
                 {
-                    _context.Update(book);
-                    await _context.SaveChangesAsync();
+             
+                    if(book.ImageFile ==null)
+                    {
+                        _context.Update(book);
+                        await _context.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(book.ImageFile.FileName);
+                        string extension = Path.GetExtension(book.ImageFile.FileName);
+						book.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+						string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                        
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await book.ImageFile.CopyToAsync(fileStream);
+                        }
+
+                        _context.Update(book);
+                        await _context.SaveChangesAsync();
+
+                    }
+                 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!BookExists(book.Id))
                     {
+
                         return NotFound();
                     }
                     else

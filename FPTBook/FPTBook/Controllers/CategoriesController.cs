@@ -12,7 +12,7 @@ using System.Security.Claims;
 
 namespace FPTBook.Controllers
 {
-	public class CategoriesController : Controller
+    public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -21,47 +21,47 @@ namespace FPTBook.Controllers
             _context = context;
         }
 
-		// GET: Categories
-		[Authorize(Roles = "Administrator")]
-		public async Task<IActionResult> Index([FromQuery] string? search)
+        // GET: Categories
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Index([FromQuery] string? search)
         {
             if(_context.Category == null)
             {
-				return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
-			}
+                return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
+            }
 
             IEnumerable<Category> categories =  _context.Category.Include(x => x.StoreOwner);
             if (!String.IsNullOrEmpty(search))
             {
-				categories = categories.Where(x=>x.Name.Contains(search));
+                categories = categories.Where(x=>x.Name.Contains(search));
 
-			}
+            }
             return View(categories);
                         
         }
 
-		[Authorize(Roles = "Administrator,Store Owner")]
-		public async Task<IActionResult> ListCategory([FromQuery] string? search)
-		{
+        [Authorize(Roles = "Administrator,Store Owner")]
+        public async Task<IActionResult> ListCategory([FromQuery] string? search)
+        {
             
 
-			 if (_context.Category == null)
-			{
-				return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
-			}
+             if (_context.Category == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
+            }
 
-			IEnumerable<Category> categories = _context.Category.Where(x => x.IsRequest == false).Include(x => x.StoreOwner);
-			if (!String.IsNullOrEmpty(search))
-			{
-				categories = categories.Where(x => x.Name.Contains(search));
+            IEnumerable<Category> categories = _context.Category.Where(x => x.IsRequest == false).Include(x => x.StoreOwner);
+            if (!String.IsNullOrEmpty(search))
+            {
+                categories = categories.Where(x => x.Name.Contains(search));
 
-			}
-			return View(categories);
-		}
+            }
+            return View(categories);
+        }
 
-		[Authorize(Roles = "Administrator,Store Owner")]
-		// GET: Categories/Details/5
-		public async Task<IActionResult> Details(string id)
+        [Authorize(Roles = "Administrator,Store Owner")]
+        // GET: Categories/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null || _context.Category == null)
             {
@@ -78,22 +78,22 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
-		// GET: Categories/Create
+        // GET: Categories/Create
 
-		[Authorize(Roles = "Administrator")]
-		public IActionResult Create()
+        [Authorize(Roles = "Administrator")]
+        public IActionResult Create()
         {
             return View();
         }
 
-		// POST: Categories/Create
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-	
+        // POST: Categories/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    
         [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-		public async Task<IActionResult> Create([Bind("Id,Name,Description")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description")] Category category)
         {
             if (ModelState.IsValid)
             {
@@ -106,9 +106,9 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
-		// GET: Categories/Edit/5
-		[Authorize(Roles = "Administrator")]
-		public async Task<IActionResult> Edit(string id)
+        // GET: Categories/Edit/5
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.Category == null)
             {
@@ -123,11 +123,11 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
-		// POST: Categories/Edit/5
-		// To protect from overposting attacks, enable the specific properties you want to bind to.
-		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[Authorize(Roles = "Administrator")]
-		[HttpPost]
+        // POST: Categories/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Description,IsRequest,StoreOwnerId")] Category category)
         {
@@ -159,9 +159,9 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
-		// GET: Categories/Delete/5
-		[Authorize(Roles = "Administrator")]
-		public async Task<IActionResult> Delete(string id)
+        // GET: Categories/Delete/5
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.Category == null)
             {
@@ -178,9 +178,9 @@ namespace FPTBook.Controllers
             return View(category);
         }
 
-		[Authorize(Roles = "Administrator")]
-		// POST: Categories/Delete/5
-		[HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Administrator")]
+        // POST: Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
@@ -200,35 +200,35 @@ namespace FPTBook.Controllers
 
 
 
-		[Authorize(Roles = "Administrator,Store Owner")]
-		public IActionResult RequestNewCategory()
-		{
-			return View();
-		}
+        [Authorize(Roles = "Administrator,Store Owner")]
+        public IActionResult RequestNewCategory()
+        {
+            return View();
+        }
 
-		[Authorize(Roles = "Administrator,Store Owner")]
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> RequestNewCategory([Bind("Id,Name,Description")] Category category)
-		{
-			if (ModelState.IsValid)
-			{
-				var currentUser = HttpContext.User;
+        [Authorize(Roles = "Administrator,Store Owner")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RequestNewCategory([Bind("Id,Name,Description")] Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentUser = HttpContext.User;
                 if (currentUser.Identity.IsAuthenticated)
                 {
                     var userIdClaim = currentUser.FindFirst(ClaimTypes.NameIdentifier);
                     category.IsRequest = true;
                     category.StoreOwnerId = userIdClaim.Value;
-			        _context.Add(category);
-					await _context.SaveChangesAsync();
-					
-				}
-				return RedirectToAction(nameof(Index));
-			}
-			return View(category);
-		}
+                    _context.Add(category);
+                    await _context.SaveChangesAsync();
+                    
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
+        }
 
-		private bool CategoryExists(string id)
+        private bool CategoryExists(string id)
         {
           return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }

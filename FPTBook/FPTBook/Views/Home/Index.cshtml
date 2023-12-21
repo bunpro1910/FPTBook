@@ -10,7 +10,7 @@
 		<button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
 	</form>
 	<section class=" mt-5 w-100">
-		<div class="row ">
+		<div class="row">
 			<div class="" style="max-width:250px; ">
 
 				<ul style="display:grid; grid-template-columns:auto ;list-style:none; background-color:ThreeDDarkShadow; margin:0; padding:0; gap:4px;padding:10px; border-radius:15px">
@@ -23,23 +23,25 @@
 				</ul>
 			</div>
 
+			<div class="row" style="width:1000px">
 			@foreach (var item in Model)
 			{
 
 
-				<div class="col-lg-3 mb-4" style="border-radius:15px; padding:10px">
-					<div class="card">
-						<img decoding="async" src="@("~/Image/" + item.ImageName)" asp-append-version="true" class="card-img-top" style="padding:5px" alt="Book 1">
-						<div class="card-body">
+				<div class="col-lg-4 mb-4" style="border-radius:15px; padding:10px;height:100%">
+					<div class="card" style="height:100%">
+						<img decoding="async" src="@("~/Image/" + item.ImageName)" asp-append-version="true" class="card-img-top" style="padding:5px;height:400px" alt="Book 1">
+						<div class="card-body" style="display:flex;flex-direction:column">
 							<h5 class="card-title">@item.Title</h5>
 							<p class="card-text">@item.Description</p>
-							<p class="card-text">@item.Price</p>
-							<a asp-controller="Orders" asp-action="Checkout" asp-route-bookId="@item.Id" class="btn btn-primary">Add To Cart</a>
+								<p class="card-text">@item.Price.ToString("N0")</p>
+							<a asp-controller="Orders" asp-action="Checkout" asp-route-bookId="@item.Id" class="btn btn-primary" style="margin-bottom:4px;margin-top:auto">Add To Cart</a>
 						</div>
 
 					</div>
 				</div>
 			}
+			</div>
 			<div style="display:flex;width:100%;justify-content:center ">
 				<div style=" width:fit-content; padding:5px 10px 5px 10px; background-color:ThreeDDarkShadow; border-radius:10px">
 					@for (int i = 1; i <= ViewBag.MaxPage; i++)
