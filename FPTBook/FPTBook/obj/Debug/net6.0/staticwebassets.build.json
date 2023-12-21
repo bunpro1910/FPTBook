@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Yn3jsLsdwNfGB8l9K/vXPYg/sTGziw5yX7N1VOQcuO4=",
+  "Hash": "vKkTomQfbEvX2zcU//PfiHdJf4RFHUT77qhkpNino80=",
   "Source": "FPTBook",
   "BasePath": "_content/FPTBook",
   "Mode": "Default",
@@ -1307,6 +1307,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\Screenshot 2023-11-29 113500"
+    },
+    {
+      "Identity": "C:\\Users\\MSI GL65\\Documents\\GitHub\\FPTBook\\FPTBook\\FPTBook\\wwwroot\\Image\\Screenshot 2023-11-29 113500232217668.png",
+      "SourceId": "FPTBook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\MSI GL65\\Documents\\GitHub\\FPTBook\\FPTBook\\FPTBook\\wwwroot\\",
+      "BasePath": "_content/FPTBook",
+      "RelativePath": "Image/Screenshot 2023-11-29 113500232217668.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\Screenshot 2023-11-29 113500232217668.png"
     },
     {
       "Identity": "C:\\Users\\MSI GL65\\Documents\\GitHub\\FPTBook\\FPTBook\\FPTBook\\wwwroot\\Image\\Untitled",

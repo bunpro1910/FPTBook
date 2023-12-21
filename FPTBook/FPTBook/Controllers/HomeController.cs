@@ -29,7 +29,7 @@ namespace FPTBook.Controllers
         public async Task<IActionResult> Index( string? id, [FromQuery] string search,int? page)
         {
             string name = search;
-            int pageSize = 3;
+            int pageSize = 4;
 			var applicationDbContext = _context.Book.Include(b => b.Category).Where(x=>x.Category.IsRequest==false);
             if (id != null)
             {
