@@ -122,8 +122,8 @@ namespace FPTBook.Controllers
             {
                 return NotFound();
             }
-            ViewData["PublisherId"] = new SelectList(_context.Publisher, "Id", "Id", book.PublisherId);
-            ViewData["CategoryId"] = new SelectList(_context.Category.Where(x => x.IsRequest == false || x.IsRequest == null), "Id", "Id", book.CategoryId);
+            ViewData["PublisherId"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherId);
+            ViewData["CategoryId"] = new SelectList(_context.Category.Where(x => x.IsRequest == false || x.IsRequest == null), "Id", "Name", book.CategoryId);
             return View(book);
         }
 
@@ -184,8 +184,8 @@ namespace FPTBook.Controllers
             
             }
             
-            ViewData["PublisherId"] = new SelectList(_context.Publisher, "Id", "Id", book.PublisherId);
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", book.CategoryId);
+            ViewData["PublisherId"] = new SelectList(_context.Publisher, "Id", "Name", book.PublisherId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", book.CategoryId);
 			var message = string.Join(" | ", ModelState.Values
 	  .SelectMany(v => v.Errors)
 	  .Select(e => e.ErrorMessage));
